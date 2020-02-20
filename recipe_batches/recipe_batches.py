@@ -3,7 +3,22 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  if (set(recipe.keys()) == set(ingredients.keys())):
+    recipeList = []
+    ingredientsList = []
+    for key in recipe:
+      recipeList.append(recipe[key])
+      ingredientsList.append(ingredients[key])
+    batches = math.floor(ingredientsList[0] / recipeList[0])  
+    for i in range(0, len(recipeList)):
+      if recipeList[i] > ingredientsList[i]: 
+       return 0
+      current = math.floor (ingredientsList[i] / recipeList[i])
+      
+      if current < batches:
+        batches = current
+    return batches     
+  return 0  
 
 
 if __name__ == '__main__':
